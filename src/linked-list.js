@@ -44,7 +44,7 @@ class LinkedList {
   }
 
   at(index) {
-    if (index <= this.length && index >= 0){
+    if (index < this.length && index >= 0){
       var node = this._head;
       for (var i=0; i < index; i++) {
         node = node.next;
@@ -124,7 +124,20 @@ class LinkedList {
      node = null;
    }
 
-  reverse() {}
+  reverse() {
+    if (this.length == 0 || this.length == 1) {
+      return this;
+    }
+    var reversedList = new LinkedList();
+    var node = this._tail;
+
+    for(var i = 0; i < this.length; i++) {
+      reversedList.append(node.data);
+      node = node.prev;
+    }
+
+    return reversedList;
+  }
 
   indexOf(data) {
     var node = this._head;
@@ -135,7 +148,7 @@ class LinkedList {
       } else
           node = node.next;
     }
-  return -1;
+    return -1;
   }
 }
 
