@@ -126,18 +126,23 @@ class LinkedList {
 
   reverse() {
     if (this.length == 0 || this.length == 1) {
-      return this;
-    }
-    var reversedList = new LinkedList();
+      return;
+      }
+
+    var tmpHead = this._head;
+
+    this._head = this._tail;
     var node = this._tail;
+    this._tail = tmpHead;
 
     for(var i = 0; i < this.length; i++) {
-      reversedList.append(node.data);
-      node = node.prev;
+      var tmpNode = node;
+      node.next = node.prev;
+      node.prev = tmpNode.next;
+      node = tmpNode.prev;
     }
-
-    return reversedList;
   }
+
 
   indexOf(data) {
     var node = this._head;
