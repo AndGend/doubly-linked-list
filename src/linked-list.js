@@ -44,9 +44,9 @@ class LinkedList {
   }
 
   at(index) {
-    if (index <= this.length && index > 0){
+    if (index <= this.length && index >= 0){
       var node = this._head;
-      for (var i=1; i < index; i++) {
+      for (var i=0; i < index; i++) {
         node = node.next;
       }
       return node.data;
