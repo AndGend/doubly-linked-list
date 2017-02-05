@@ -55,15 +55,15 @@ class LinkedList {
   }
 
   insertAt(index, data) {
-     if (index <= 0 || index > (this.length + 1)) {
+     if (index < 0 || index > (this.length + 1)) {
        return;
      }
 
-     if (index == 1 && this.length == 0) {
+     if (index == 0 && this.length == 0) {
        this.append(data);
      } else  if (index == (this.length + 1)) {
        this.append(data);
-     } else if (index == 1 && this.length > 0) {
+     } else if (index == 0 && this.length > 0) {
          var newNode = new Node(data);
          var node = this._head;
          newNode.next = node;
@@ -74,7 +74,7 @@ class LinkedList {
        var newNode = new Node(data);
        var node = this._head;
 
-       for (var i=1; i < index; i++) {
+       for (var i=0; i < index; i++) {
          node = node.next;
        }
        newNode.prev = node.prev;
