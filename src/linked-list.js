@@ -97,13 +97,13 @@ class LinkedList {
   }
 
   deleteAt(index) {
-     if (index <= 0 || index > this.length) {
+     if (index < 0 || index > this.length) {
        return;
      }
      var node;
-     if (index == 1 && this.length == 1) {
+     if (index == 0 && this.length == 1) {
        this.clear();
-     } else if (index == 1) {
+     } else if (index == 0) {
        node = this._head;
        node.next.prev = null;
        this._head = node.next;
@@ -113,7 +113,7 @@ class LinkedList {
          this._tail = node.prev;
      } else {
        var node = this._head;
-       for (var i=1; i < index; i++) {
+       for (var i=0; i < index; i++) {
          node = node.next;
        }
        node.prev.next = node.next;
@@ -126,8 +126,17 @@ class LinkedList {
 
   reverse() {}
 
-  indexOf(data) {}
+  indexOf(data) {
+    var node = this._head;
 
+    for (var index = 0; index < this.length ; index++) {
+      if (data == node.data) {
+        return index;
+      } else
+          node = node.next;
+    }
+  return -1;
+  }
 }
 
 module.exports = LinkedList;
